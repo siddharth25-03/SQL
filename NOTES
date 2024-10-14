@@ -68,6 +68,8 @@ select stu.student_id,stu.student_name,sub.subject_name from Students as stu,Sub
 
 select s.user_id,ROUND(AVG(IF(action="confirmed",1,0)),2) AS confirmation_rate  from Signups as s LEFT OUTER JOIN Confirmations as c ON s.user_id=c.user_id group by s.user_id;
 
-# Write your MySQL query statement below
 
 select p.product_id,IF(ROUND(SUM(price*units)/SUM(units),2) IS NULL,0,ROUND(SUM(price*units)/SUM(units),2)) as average_price from Prices as p LEFT OUTER JOIN UnitsSold as u ON p.product_id=u.product_id and u.purchase_date between p.start_date and p.end_date group by p.product_id; 
+
+
+select SUBSTR(trans_date,1,7) as month,country,count(*) as trans_count ,sum(IF(state="approved",1,0)) as approved_count ,SUM(amount) as trans_total_amount  ,SUM(IF(state="approved",amount,0)) as approved_total_amount from Transactions as t group by country,month;
