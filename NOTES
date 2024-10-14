@@ -65,3 +65,5 @@ FROM Weather w1, Weather w2
 WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1 AND w1.temperature > w2.temperature;
 
 select stu.student_id,stu.student_name,sub.subject_name from Students as stu,Subjects as sub,Examinations as e group by student_name,sub.subject_name order by student_id,sub.subject_name;
+
+select s.user_id,ROUND(AVG(IF(action="confirmed",1,0)),2) AS confirmation_rate  from Signups as s LEFT OUTER JOIN Confirmations as c ON s.user_id=c.user_id group by s.user_id;
