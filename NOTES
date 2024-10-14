@@ -63,3 +63,5 @@ ORDER BY Orders.OrderID;
 SELECT w1.id
 FROM Weather w1, Weather w2
 WHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1 AND w1.temperature > w2.temperature;
+
+select stu.student_id,stu.student_name,sub.subject_name from Students as stu,Subjects as sub,Examinations as e group by student_name,sub.subject_name order by student_id,sub.subject_name;
