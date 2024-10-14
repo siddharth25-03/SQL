@@ -1,0 +1,61 @@
+SELECT column1, column2, ...
+FROM table_name;
+
+SELECT COUNT(DISTINCT Country) FROM Customers;
+
+SELECT * FROM Customers
+WHERE Country='Mexico';
+
+The ORDER BY keyword sorts the records in ascending order by default
+
+For string values the ORDER BY keyword will order alphabetically:
+
+
+ORDER BY Several Columns
+
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+
+This means that it orders by Country, but if some rows have the same Country, it orders them by CustomerName:
+
+
+SELECT * FROM Customers
+WHERE Country = 'Spain' AND(CustomerName LIKE 'G%' ORCustomerName LIKE 'R%');
+
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'A%';
+
+SELECT * FROM Customers
+WHERE CustomerID NOT BETWEEN 10 AND. 60;
+
+
+SELECT * FROM Customers
+WHERE NOT CustomerID > 50;
+
+
+SELECT SUM(Quantity * 10)
+FROM OrderDetails; 
+
+Return all customers starting with either "b", "s", or "p":
+SELECT * FROM Customers
+WHERE CustomerName LIKE '[bsp]%';
+
+Return all customers starting with "a", "b", "c", "d", "e" or "f":
+SELECT * FROM Customers
+WHERE CustomerName LIKE '[a-f]%';
+
+SELECT * FROM Customers
+WHERE Country NOT IN ('Germany', 'France', 'UK');
+
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN '1996-07-01'AND '1996-07-31';
+
+SELECT ProductName AS [My Great Products]
+FROM Products; 
+
+Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ONOrders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
