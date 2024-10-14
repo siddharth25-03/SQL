@@ -73,3 +73,12 @@ select p.product_id,IF(ROUND(SUM(price*units)/SUM(units),2) IS NULL,0,ROUND(SUM(
 
 
 select SUBSTR(trans_date,1,7) as month,country,count(*) as trans_count ,sum(IF(state="approved",1,0)) as approved_count ,SUM(amount) as trans_total_amount  ,SUM(IF(state="approved",amount,0)) as approved_total_amount from Transactions as t group by country,month;
+
+
+Select round(avg(order_date = customer_pref_delivery_date)*100, 2) as immediate_percentage
+from Delivery
+where (customer_id, order_date) in (
+  Select customer_id, min(order_date) 
+  from Delivery
+  group by customer_id
+);
