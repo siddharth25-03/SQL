@@ -10,6 +10,8 @@ The ORDER BY keyword sorts the records in ascending order by default
 
 For string values the ORDER BY keyword will order alphabetically:
 
+SELECT IFNULL(NULL, 500);
+if this statement is NULL then 500 is printed
 
 ORDER BY Several Columns
 
