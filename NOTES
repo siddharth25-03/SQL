@@ -98,3 +98,16 @@ select distinct num as ConsecutiveNums from cte where num=num1 and num=hel;
 
 
 
+SELECT 
+    sector,
+    SUM(
+        CASE 
+            WHEN turnover LIKE '%B' THEN CAST(REPLACE(REPLACE(turnover, '$', ''), 'B', '') AS FLOAT) * 1000000000
+            WHEN turnover LIKE '%M' THEN CAST(REPLACE(REPLACE(turnover, '$', ''), 'M', '') AS FLOAT) * 1000000
+            ELSE 0
+        END
+    ) AS total_turnover
+FROM companies
+GROUP BY sector;
+
+
