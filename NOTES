@@ -84,3 +84,17 @@ where (customer_id, order_date) in (
   from Delivery
   group by customer_id
 );
+
+
+-- this basically creates a new table named as cte and return column names as num,num1,hel
+with cte (num,num1,hel) as (
+    select num,
+    lead(num,1) over(),
+    lead(num,2) over()
+    from logs
+
+)
+select distinct num as ConsecutiveNums from cte where num=num1 and num=hel;
+
+
+
