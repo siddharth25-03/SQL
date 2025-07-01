@@ -176,6 +176,13 @@ function is a match parameter that tells SQL
 to perform a case-sensitive match.
 
 
+
+SELECT user_id, 
+       CONCAT(UPPER(SUBSTR(name, 1, 1)), LOWER(SUBSTR(name, 2))) AS name 
+FROM Users 
+ORDER BY user_id;
+
+
 select * from patients
 where conditions like 'DIAB1%' or conditions like '% DIAB1%'
 
