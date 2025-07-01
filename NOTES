@@ -142,3 +142,21 @@ SELECT "High Salary" AS category,
   FROM Accounts;
 
 
+
+
+
+
+
+with cte as (
+select product_id,max(change_date) as change_date from Products where change_date<='2019-08-16' group by 
+product_id
+), 
+
+fin as (
+select p.product_id,sum(if(c.change_date is null,0,p.new_price)) as price from Products as p left join cte as c on p.product_id=c.product_id and p.change_date=c.change_date group by p.product_id
+
+)
+
+select product_id, case when price>0 then price else 10 end as price from fin
+
+
