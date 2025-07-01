@@ -187,3 +187,21 @@ select * from patients
 where conditions like 'DIAB1%' or conditions like '% DIAB1%'
 
 
+# Write your MySQL query statement below
+with cte as(
+    select requester_id from RequestAccepted
+
+    UNION ALL
+    
+    select accepter_id from RequestAccepted
+    
+),
+tabl as (
+    select requester_id,count(*) as cnts from cte group by requester_id
+)
+
+
+select requester_id as id,cnts as num from tabl where cnts in (select max(count(*)) over() as maxi from cte group by requester_id) 
+
+
+
