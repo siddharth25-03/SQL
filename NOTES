@@ -167,4 +167,12 @@ select sell_date,count(distinct(product)) as num_sold,group_concat(distinct(prod
 
 
 
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_.-]*@leetcode[\.]com$'
+
+-- ^[A-Za-z] the first character must be a letter. after that...
+-- [A-Za-z0-9_.-]* match any number of letters, numbers, underscore, periods, dashes (the * sign indicating "any number of, including zero"). after that...
+-- @leetcode.comtheemailmustendwithexactly"@leetcode.com"(the sign indicating "ending with")
+
 
