@@ -111,3 +111,16 @@ FROM companies
 GROUP BY sector;
 
 
+
+with cte as(
+#get table of sum of weights until that person. make sure to order by tur
+    select person_name,sum(weight) over(order by turn)  as tw
+    from Queue  
+    -- window function
+),
+below as (
+    select row_number() over() as id,person_name,tw from cte where tw<=1000 order by tw desc
+)
+select person_name from below where id=1;
+
+
