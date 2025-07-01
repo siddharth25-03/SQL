@@ -160,3 +160,11 @@ select p.product_id,sum(if(c.change_date is null,0,p.new_price)) as price from P
 select product_id, case when price>0 then price else 10 end as price from fin
 
 
+
+# Write your MySQL query statement below
+
+select sell_date,count(distinct(product)) as num_sold,group_concat(distinct(product) order by product separator ',') as products from Activities group by sell_date 
+
+
+
+
