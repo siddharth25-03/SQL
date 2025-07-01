@@ -176,3 +176,7 @@ function is a match parameter that tells SQL
 to perform a case-sensitive match.
 
 
+select * from patients
+where conditions like 'DIAB1%' or conditions like '% DIAB1%'
+
+
