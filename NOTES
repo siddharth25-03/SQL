@@ -217,3 +217,17 @@ FROM Seat
 ORDER BY id;
 
 
+
+
+# Write your MySQL query statement below
+
+DELETE FROM person
+WHERE id NOT IN (
+    SELECT id FROM (
+        SELECT MIN(id) AS id
+        FROM person
+        GROUP BY email
+    ) AS temp
+);
+
+here we have to wrap the inner most as it gives error when we try to because same person table cannot be accessed twice simultaneously
